@@ -1,14 +1,14 @@
 //  ОБЯЗАТЕЛЬНО СТРАНИЦУ НУЖНО ПРОКУРТИТЬ ВНИЗ, ИНАЧЕ НЕ ВСЕ МАРКЕТЫ СТАТИСТИКИ УДАЛЯТСЯ
  
-let marketContainer = document.querySelectorAll('.EC_EE')[0]
+let marketContainer = document.querySelectorAll('.EC_Ce')[0]
 let statisticWords = ['грок', 'углов', 'ЖЁЛТЫЕ', 'фолы', 'удары', 'офсайд', 'аут', 'сейв', 'отбор', 'передач', 'кто забьет']
  
 // Раскрываем маркеты и удаляем стату
  
 for (let marketGroups of [...marketContainer.children]) {
-    if (marketGroups.querySelectorAll('.EC_HZ')[0] === undefined) continue
+    if (marketGroups.querySelectorAll('.EC_HS')[0] === undefined) continue
  
-    let marketGroupTitle = marketGroups.querySelectorAll('.EC_HZ')[0].firstElementChild.innerText.toUpperCase()
+    let marketGroupTitle = marketGroups.querySelectorAll('.EC_HS')[0].firstElementChild.innerText.toUpperCase()
     if (statisticWords.some(word => marketGroupTitle.includes(word.toUpperCase()))) {
         console.log('УДАЛЕН', marketGroupTitle)
         marketGroups.remove()
