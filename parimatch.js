@@ -1,26 +1,33 @@
 //  ОБЯЗАТЕЛЬНО СТРАНИЦУ НУЖНО ПРОКУРТИТЬ ВНИЗ, ИНАЧЕ НЕ ВСЕ МАРКЕТЫ СТАТИСТИКИ УДАЛЯТСЯ
+// запускать 2 раза!
+
+let allMarketGroups = document.querySelectorAll('[data-id="market-item"]');
+let allMarketButtons = [] 
+let statisticWords = ['грок', 'углов', 'жёлтые', 'фолы', 'удары', 'офсайд', 'аут', 'сейв', 'отбор', 'передач', 'кто забьет']
  
-let marketContainer = document.querySelectorAll('.EC_Ce')[0]
-let statisticWords = ['грок', 'углов', 'ЖЁЛТЫЕ', 'фолы', 'удары', 'офсайд', 'аут', 'сейв', 'отбор', 'передач', 'кто забьет']
- 
-// Раскрываем маркеты и удаляем стату
- 
-for (let marketGroups of [...marketContainer.children]) {
-    if (marketGroups.querySelectorAll('.EC_HS')[0] === undefined) continue
- 
-    let marketGroupTitle = marketGroups.querySelectorAll('.EC_HS')[0].firstElementChild.innerText.toUpperCase()
+for (let marketGroup of [...allMarketGroups]) {
+    // удаляем
+    let marketGroupTitle = marketGroup.lastElementChild.firstElementChild.firstElementChild.firstElementChild.textContent.toUpperCase()
+    
     if (statisticWords.some(word => marketGroupTitle.includes(word.toUpperCase()))) {
-        console.log('УДАЛЕН', marketGroupTitle)
-        marketGroups.remove()
+            console.log('УДАЛЕНО: ', marketGroupTitle, '\n')
+            marketGroup.remove()
+            continue
     }
+    console.log('ОСТАЕТСЯ: ', marketGroupTitle, '\n')
  
-    isOpened = marketGroups.querySelectorAll('.EC_Fw').length
-    if (isOpened == 0) {
-        marketGroups.querySelectorAll('div[role=button]')[0].click()
+    // раскрываем
+    isOpened = marketGroup.lastElementChild.children.length
+    
+    if (isOpened == 1) {
+        marketGroup.querySelectorAll('div[role=button]')[0].click()
     }
+
+    // считаем все маркеты
+    let buttons = marketGroup.lastElementChild.lastElementChild.querySelectorAll('[data-id="animated-odds-value"]')
+    allMarketButtons.push(...buttons)
 }
- 
-// Считаем все маркеты
- 
-console.log(document.querySelectorAll('span.EC_JE'))
-console.log(document.querySelectorAll('span.EC_JE').length)
+
+
+console.log(allMarketButtons)
+console.log(allMarketButtons.length)
