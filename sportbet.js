@@ -14,7 +14,7 @@ for (let section of sectionListItems) {
     await new Promise(r => setTimeout(r, delayTimer))
     
     let marketsContainer = document.querySelector("main > div > section > div.flex > div > div > div > div > div.flex > div > div")
-    let btns = marketsContainer.querySelectorAll('button[data-odd-active]')
+    let btns = marketsContainer.querySelectorAll('button[data-odd-active]:not(button[disabled])')
 
     resultButtons.push(...btns)
     console.log(sectionTitle)
