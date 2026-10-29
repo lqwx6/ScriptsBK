@@ -6,7 +6,7 @@ const delayTimer = 1000
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // Статистика
-const statisticWords = ['corner', 'yellow', 'foul', 'shot', 'goalscorers', 'player', 'card']
+const statisticWords = ['corner', 'yellow', 'foul', 'shot', 'goalscorers', 'player', 'card', 'goal scorer', 'promoted build a bet']
 
 let marketContainer = document.querySelector('.option-group-list > .group-list')
 let marketGroupsTitles = marketContainer.querySelectorAll('.ds-accordion-header-start')
